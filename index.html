@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<style>
+    *,
+*::after,
+*::before {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	place-content: center;
+}
+
+img {
+	margin-right: 50px;
+}
+
+.content-container {
+	display: flex;
+	align-items: center;
+	border: 2px solid grey;
+	padding: 50px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+</style>
+<script>
+const currentQuant = document.getElementById("qty");
+const addQuant = document.getElementById("add-qty");
+const removeQty = document.getElementById("remove-qty");
+const pincode = document.getElementById("pincode");
+const checkAvailabiltu = document.getElementById("check");
+const addToCart = document.getElementById("add-to-cart");
+let quantity = 1;
+let userPincode = "";
+
+addQuant.addEventListener("click", (e) => {
+	e.preventDefault();
+	currentQuant.innerText = ++quantity;
+});
+
+removeQty.addEventListener("click", (e) => {
+	e.preventDefault();
+	if (quantity > 1) currentQuant.innerText = --quantity;
+});
+
+pincode.addEventListener("change", (e) => {
+	if (e.target.value !== "560017" && e.target.value !== "560103") {
+		addToCart.disabled = true;
+	}
+});
+</script>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Marmeto</title>
+	</head>
+	<body>
+		<div class="content-container">
+			<img src="./img/download.jpg" alt="shirt"  height="200" weight="200"/>
+			<div class="detail-content">
+				<div class="content-title">Classic Denim Shirt</div>
+				<div class="rating-container">
+					<div class="rating-stars"></div>
+					<div class="number-of-reviews">25 reviews</div>
+				</div>
+				<div class="qty-container">
+					<button id="add-qty">+</button>
+					<div id="qty">1</div>
+					<button id="remove-qty">-</button>
+				</div>
+				<div class="pincode-avail">
+					<div class="check-pin">Check COD Availabilty</div>
+					<input type="number" name="pincode" id="pincode" />
+					<button id="check">Check</button>
+				</div>
+				<button id="add-to-cart">Add to Cart  ₹2,599.00</button>
+			</div>
+		</div>
+	</body>
+</html>
